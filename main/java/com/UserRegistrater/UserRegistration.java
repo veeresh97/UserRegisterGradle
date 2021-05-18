@@ -5,38 +5,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-    //name validation
-    public static boolean validName(String name) {
-        String regex = "^[A-Z][a-zA-Z]{2,}";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(name);
-        return matcher.matches();
+    static Scanner sc = new Scanner(System.in);
+    public static void validation(String firstName, String lastName, String email, String mobile) {
+        // First Name and Last Name Validation
+        System.out.println("First Name: " + Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", firstName));
+        System.out.println("Last Name: " + Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", lastName));
+        // Email validation
+        System.out.println("E-Mail: " + Pattern.matches("[a-zA-Z-\\+]+(\\.[a-zA-Z0-9-]+)*@[A-Za-z-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email));
+        // PhoneNumber validation
+        System.out.println("Mobile Number: " + Pattern.matches("^[9][1][\s][6-9]{1}[0-9]{9}$", mobile));
     }
-    //email validation
-    public static boolean emailValid(String email) {
-        String regx = "[a-zA-Z-\\+]+(\\.[a-zA-Z0-9-]+)*@[A-Za-z-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        Pattern pattern = Pattern.compile(regx);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter firstName : ");
-        String firstName = scan.nextLine();
-        System.out.println("First name :"+validName(firstName));
-        if(validName(firstName))
-            System.out.println("Firstname is valid");
-        System.out.println("Enter last  Name: ");
-        String lastName = scan.nextLine();
-        System.out.println("Last name :"+validName(lastName));
-        if(validName(lastName))
-            System.out.println("Lastname is valid");
-        System.out.println("Enter your email :");
-        String email = scan.nextLine();
-        if(emailValid(email))
-            System.out.println("email is correct");
-        else
-            System.out.println("invalid");
+        System.out.println("Enter a valid first name");
+        String firstName = sc.nextLine();
+        System.out.println("Enter a valid last name");
+        String lastName = sc.nextLine();
+        System.out.println("Enter a valid email");
+        String email = sc.nextLine();
+        System.out.println("Enter a valid mobile number starting with 91 followed by a space and 10 digit number");
+        String mobile = sc.nextLine();
+        validation(firstName, lastName, email, mobile);
+
     }
 }
